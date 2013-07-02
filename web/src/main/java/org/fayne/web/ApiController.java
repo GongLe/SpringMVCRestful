@@ -28,7 +28,7 @@ public class ApiController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView list(ModelMap model) {
-        System.out.println("api list method=get " );
+        System.out.println("api list method=get ");
         return new ModelAndView("/api/list");
     }
 
@@ -37,8 +37,7 @@ public class ApiController {
      */
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public ModelAndView get(ModelMap model, @PathVariable String id) {
-        System.out.println("api get method=get:" + id );
-        model.addAttribute("id", id);
+        System.out.println("api get method=get:" + id);
         return new ModelAndView("/api/detail");
     }
 
@@ -47,8 +46,7 @@ public class ApiController {
      */
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     public ModelAndView delete(ModelMap model, @PathVariable String id) {
-        System.out.println("api delete method=delete:" + id );
-        model.addAttribute("id", id);
+        System.out.println("api delete method=delete:" + id);
         return new ModelAndView(LIST);
     }
 
@@ -57,8 +55,10 @@ public class ApiController {
      */
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     public ModelAndView update(ModelMap model, @PathVariable String id) {
-        System.out.println("api update  method=put :" + id );
+        System.out.println("api update  method=put :" + id);
         model.addAttribute("id", id);
+        model.clear();
+        model.addAttribute("clear", "hasClear");
         return new ModelAndView(LIST);
     }
 
@@ -67,7 +67,8 @@ public class ApiController {
      */
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView create(ModelMap model) {
-        System.out.println("api create one method=post  " );
+        System.out.println("api create one method=post  ");
+        model.clear();
         return new ModelAndView(LIST);
     }
 }

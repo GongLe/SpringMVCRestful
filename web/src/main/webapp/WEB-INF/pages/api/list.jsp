@@ -1,4 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,16 +25,18 @@
 
 <h3>this is list page </h3>
 
-<form action="" method="post" id="create" name="create">
+<form action="<%=basePath%>api/" method="post" id="create" name="create">
     <button type="submit">submit create</button>
 </form>
-<form action="api/123456" method="put" id="update" name="update">
+<form action="<%=basePath%>api/123456" method="post" id="update" name="update">
+    <input type="hidden" name="_method" value="put"/>
     <button type="submit">submit update</button>
 </form>
-<form action="api/123456" method="delete" id="delete" name="delete">
+<form action="<%=basePath%>api/123456" method="post" id="delete" name="delete">
+    <input type="hidden" name="_method" value="delete"/>
     <button type="submit">submit delete</button>
 </form>
-<form action="api/123456" method="get" id="get" name="get">
+<form action="<%=basePath%>api/123456" method="get" id="get" name="get">
     <button type="submit">submit get one</button>
 </form>
 
