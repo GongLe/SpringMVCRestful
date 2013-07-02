@@ -5,7 +5,8 @@
 
     <display-name>Spring Web MVC Application</display-name>
     <!-- 浏览器不支持put,delete等method,由该filter将url parameter:_method=delete转换为标准的http delete方法
-        注意 HiddenHttpMethodFilter 必须置于DispatcherServlet前面.-->
+        注意 HiddenHttpMethodFilter 必须置于DispatcherServlet前面.
+        过滤器只能接受enctype值为application/x-www-form-urlencoded.-->
     <filter>
         <filter-name>HiddenHttpMethodFilter</filter-name>
         <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
